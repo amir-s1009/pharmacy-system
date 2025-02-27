@@ -1,0 +1,10 @@
+{
+    "patient":[
+        "prescriptions",
+        "visits"
+    ],
+    "doctor":[
+        "new-prescription",
+        "patient-history"
+    ]
+}

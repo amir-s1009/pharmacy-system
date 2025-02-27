@@ -1,0 +1,11 @@
+[
+    {
+        "id":1,
+        "patient":1,
+        "doctor":2,
+        "date":"",
+        "insurance":"US State Insurance",
+        "price":120,
+        "prescription":1
+    }
+]

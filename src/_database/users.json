@@ -1,0 +1,16 @@
+[
+    {
+        "id":1,
+        "username":"amirhossein",
+        "password":"0000",
+        "fullname":"Amirhossein Ranjdoozan",
+        "role":"patient"
+    },
+    {
+        "id":2,
+        "username":"navid",
+        "password":"1234",
+        "fullname":"Navid Rahnoma",
+        "role":"doctor"
+    }
+]
