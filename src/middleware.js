@@ -10,7 +10,7 @@ export function middleware(request){
     }
     else{
         if(path.startsWith("/api")){
-            return new Response(null, {status:401});
+            return new Response("Unauthorized", {status:401});
         }
         else{
             return NextResponse.redirect(new URL('/login', request.url));
@@ -23,6 +23,6 @@ export const config = {
         '/dashboard/:path*',
         '/api/visits',
         '/api/prescriptions',
-        '/api/users',
+        '/api/users/:path*',
     ]
 }

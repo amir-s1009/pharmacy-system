@@ -1,29 +1,18 @@
 import styles from '@/app/dashboard/_styles/table.module.css';
 import dedicatedStyle from './prescription.module.css';
-import { useEffect, useState, useCallback } from 'react';
+import { useCallback } from 'react';
+import { useFetchData } from '@/hooks/data';
 
 function Prescription({prescriptionId}) {
 
-    const [prescription, setPrescription] = useState(null);
+    const prescription = useFetchData(`prescriptions/${prescriptionId}`, undefined);
     
     const calcTotalCost = useCallback(()=>{
         if(prescription){
-            let totalPrice = 0;
-            for(const item of prescription.content){
-                totalPrice += item.price * item.count;
-            }
-            return totalPrice;
+            const totalSum = prescription.content.reduce((total, item) => total+(item.count*item.price), 0);
+            return totalSum;
         }
     }, [prescription])
-
-    useEffect(() => {
-        async function getPrescription() {
-            const response = await fetch(`http://localhost:3000/api/prescriptions/${prescriptionId}`, {credentials:"include"});
-            const data = await response.json();
-            setPrescription(data);
-        }
-        getPrescription();
-    }, [])
 
   return (
     <div className={dedicatedStyle.prescriptionC} onClick={(e)=> e.stopPropagation()}>

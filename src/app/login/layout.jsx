@@ -1,8 +1,8 @@
-import './layout.module.css';
+import styles from './layout.module.css';
 
 function Layout({children}) {
   return (
-    <div className='loginL'>{children}</div>
+    <div className={styles.loginL}>{children}</div>
   )
 }
 

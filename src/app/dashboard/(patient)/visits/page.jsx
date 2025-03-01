@@ -4,22 +4,15 @@ import {useModal} from '@/hooks/modal';
 import styles from '../../_styles/table.module.css';
 import Modal from '@/components/modal/modal';
 import Prescription from '@/components/prescription/prescription';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { useFetchData } from '@/hooks/data';
 
 function Visits() {
 
   const [isOpen, handleOpen, handleClose] = useModal(false);
-  const [visits, setVisits] = useState([]);
   const [prescriptionId, setPrescriptionId] = useState(undefined);
-  
-  useEffect(()=>{
-    async function getVisits(){
-      const response = await fetch("http://localhost:3000/api/visits", {credentials:"include"});
-      const data = await response.json();
-      setVisits(data);
-    }
-    getVisits();
-  }, []);
+
+  const visits = useFetchData("visits", []);
 
   return (
     <>

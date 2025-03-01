@@ -6,13 +6,13 @@ import SidebarButton from '@/components/sidebarButton/sidebarButton';
 import sidebarButtons from '@/config/sidebarButtons.json';
 import { SidebarContextProvider } from '@/context/sidebar';
 import { cookies } from 'next/headers';
+import { fetchData } from '@/utils/data';
 
 async function Layout({children}) {
   
   const userId = (await cookies()).get('ssid').value;
 
-  const response = await fetch(`http://localhost:3000/api/users/${userId}`, {credentials:"include"});
-  const user = await response.json();
+  const user = await fetchData(`users/${userId}`);
   const isPatient = user.role === 'patient';
 
   return (
